@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groupie-Tracker</title>
+    <title>Groupie Trackers</title>
 </head>
+
 <body>
-    
+    <div class="header">
+        <h1>Groupie Trackers</h1>
+        <div class="search-box">
+
+            <form method="GET">
+                <input type="text" name="query" placeholder="search for a band or member">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="grid">
+{{ range . }}
+<div class="card">
+<img src="{{ .Image }}" alt="{{ .Name}}">
+<div class="name">{{ .Name }}   </div>
+<div class="info-row">Formed: {{ .CreationDate }} • First Album: {{ .First Album} } </div>
+
+<span class="section-label">Members</span>
+<div class="member-container"> 
+    {{ range .Members }}
+    <span class="member-tag"> {{ . }} </span>
+{{ end }}
+</div>
+</div>
+
+    </div>
 </body>
+
 </html>
