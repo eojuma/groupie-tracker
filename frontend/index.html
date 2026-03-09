@@ -12,8 +12,8 @@
         <h1>Groupie Trackers</h1>
         <div class="search-box">
 
-            <form method="GET">
-                <input type="text" name="query" placeholder="search for a band or member">
+            <form method="GET" action="/">
+                <input type="text" name="query" placeholder="Search for a band or member" required>
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -23,21 +23,21 @@
     <div class="grid">
         {{ range . }}
         <div class="card">
-            <img src="{{ .Image }}" alt="{{ .Name}}">
-            <div class="name">{{ .Name }} </div>
-            <div class="info-row">Formed: {{ .CreationDate }} &bull; First Album: {{ .FirstAlbum} } </div>
+            <img src="{{ .Image }}" alt="{{ .Name }}">
+            <div class="name">{{ .Name }}</div>
+            <div class="info-row">Formed: {{ .CreationDate }} &bull; First Album: {{ .FirstAlbum}} </div>
 
             <span class="section-label">Members</span>
             <div class="member-container">
                 {{ range .Members }}
-                <span class="member-tag"> {{ . }} </span>
+                <span class="member-tag"> {{ . }}</span>
                 {{ end }}
             </div>
 
             <span class="section-label">Concert Dates and Location</span>
             <div class="concert-scroll">
-                {{ range $loc, $dates :=.Relations }}
-                <span class="loc">{{ $loc | formatLoc}} </span>
+                {{ range $loc, $dates := .Relations }}
+                <span class="loc">{{ $loc | formatLoc}}</span>
                 {{ range $dates}}
                 <span class="date">&bull; {{ . }}</span>
                 {{ end }}
