@@ -43,3 +43,23 @@ func GetLocations() ([]Location, error) {
 	return locations, nil
 }
 
+
+
+func GetDates() ([]Date, error) {
+	url := "https://groupietrackers.herokuapp.com/api/dates"
+
+	resp, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	var dates []Date
+	err = json.NewDecoder(resp.Body).Decode(&dates)
+	if err != nil {
+		return nil, err
+	}
+
+	return dates, nil
+}
+
