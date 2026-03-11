@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// GetArtists fetches all artists from the API
+
 func GetArtists() ([]Artist, error) {
 	url := "https://groupietrackers.herokuapp.com/api/artists"
 
@@ -23,3 +23,23 @@ func GetArtists() ([]Artist, error) {
 
 	return artists, nil
 }
+
+
+func GetLocations() ([]Location, error) {
+	url := "https://groupietrackers.herokuapp.com/api/locations"
+
+	resp, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	var locations []Location
+	err = json.NewDecoder(resp.Body).Decode(&locations)
+	if err != nil {
+		return nil, err
+	}
+
+	return locations, nil
+}
+
