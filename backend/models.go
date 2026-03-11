@@ -16,6 +16,16 @@ type Location struct {
 }
 
 
+
+
+type Date struct {
+	ID      int     `json:"id"`    
+	Dates   []string `json:"dates"` 
+}
+
+
+
+
 type Relation struct {
 	ArtistID   int   `json:"artistId"`
 	LocationID int   `json:"locationId"`
