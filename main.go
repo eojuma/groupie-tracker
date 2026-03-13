@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	// Define custom template functions
+	// 1. Define custom template functions for formatting data
 	funcMap := template.FuncMap{
 		"formatLoc": func(s string) string {
 			s = strings.ReplaceAll(s, "_", " ")
@@ -19,24 +19,31 @@ func main() {
 		},
 	}
 
-	// Parse templates with custom functions
+	// 2. Parse all templates in the frontend folder with the custom functions
 	var err error
 	backend.Templates, err = template.New("").Funcs(funcMap).ParseGlob("frontend/*.html")
 	if err != nil {
-		log.Fatalf("Failed to parse templates: %v", err)
+		log.Fatalf("Critical Error: Failed to parse templates: %v", err)
 	}
 
-	// Serve static files (CSS, JS, images)
+	// 3. Serve static files (CSS, Images) 
+	// This maps the physical folder "frontend/static" to the URL path "/static/"
 	fs := http.FileServer(http.Dir("frontend/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	// Register routes
+	// 4. Register Routes
+	// Root route handles the search and the main grid
 	http.HandleFunc("/", backend.HomeHandler)
-	//http.HandleFunc("/artist/", backend.ArtistHandler)
+	
+	// Details route handles the "clickable card" event
+	// This will look for the DetailsHandler function in your backend package
+	http.HandleFunc("/details", backend.DetailsHandler)
 
+	// 5. Start the Server
 	port := ":8080"
-	fmt.Printf("🎵 Groupie Tracker running at http://localhost%s\n", port)
+	fmt.Printf("🎵 Groupie Tracker is live at http://localhost%s\n", port)
+
 	if err := http.ListenAndServe(port, nil); err != nil {
-		log.Fatalf("Server failed: %v", err)
+		log.Fatalf("Server failed to start: %v", err)
 	}
 }
