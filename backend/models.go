@@ -31,3 +31,29 @@ type Relation struct {
 	LocationID int   `json:"locationId"`
 	Dates      []int `json:"dates"` 
 }
+
+type ArtistDetail struct {
+	Artist
+	DatesLocations map[string][]string
+}
+
+type RelationResponse struct {
+	ID             int                 `json:"id"`
+	DatesLocations map[string][]string `json:"datesLocations"`
+}
+
+// PageData holds data passed to the home page template
+type PageData struct {
+	Artists []ArtistDetail
+	Query   string
+	Total   int
+}
+
+type ErrorData struct {
+	StatusCode int
+	Message    string
+}
+
+type RelationIndex struct {
+	Index []RelationResponse `json:"index"`
+}
