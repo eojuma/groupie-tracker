@@ -13,7 +13,7 @@
         <div class="search-box">
 
             <form method="GET" action="/">
-                <input type="text" name="query" placeholder="Search for a band or member" required>
+                <input type="text" name="query" placeholder="Search for a band or member" value="{{.Query}}">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -21,7 +21,7 @@
 
 
     <div class="grid">
-        {{ range . }}
+        {{ range .Artists }}
         <div class="card">
             <img src="{{ .Image }}" alt="{{ .Name }}">
             <div class="name">{{ .Name }}</div>
@@ -36,7 +36,7 @@
 
             <span class="section-label">Concert Dates and Location</span>
             <div class="concert-scroll">
-                {{ range $loc, $dates := .Relations }}
+                {{ range $loc, $dates := .DatesLocations }}
                 <span class="loc">{{ $loc | formatLoc}}</span>
                 {{ range $dates}}
                 <span class="date">&bull; {{ . }}</span>
