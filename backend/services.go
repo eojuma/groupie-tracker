@@ -72,25 +72,6 @@ func GetDates() ([]Date, error) {
 	return dates, nil
 }
 
-
-// func GetRelations() ([]Relation, error) {
-// 	url := "https://groupietrackers.herokuapp.com/api/relation"
-
-// 	resp, err := http.Get(url)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	defer resp.Body.Close()
-
-// 	var relations []Relation
-// 	err = json.NewDecoder(resp.Body).Decode(&relations)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-
-// 	return relations, nil
-// }
-
 func GetRelations() (map[int]map[string][]string, error) {
 	url := "https://groupietrackers.herokuapp.com/api/relation"
 	resp, err := http.Get(url)
