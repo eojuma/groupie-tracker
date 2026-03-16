@@ -30,22 +30,6 @@ A dynamic web application built with Go that consumes a multi-part RESTful API t
 
     Deployment: Render / GitHub
 
-📋 Project Structure
-groupie-tracker/
-├── main.go
-├── backend/
-│   ├── handlers.go
-│   ├── models.go
-│   └── services.go
-├── frontend/
-│   ├── index.html
-│   ├── details.html
-│   ├── error.html
-│   └── static/
-│       └── styles.css
-├── go.mod
-└── README.md
-
 💻 Installation & Usage
 
 To run this project locally, ensure you have Go installed.
