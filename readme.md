@@ -2,8 +2,7 @@ Groupie Tracker
 
 A dynamic web application built with Go that consumes a multi-part RESTful API to visualize data about musical artists, their concert locations, and scheduled dates. This project demonstrates full-stack development using only the Go standard library, focusing on data orchestration, JSON manipulation, and client-server interactions.
 🚀 Live Demo
-
-Explore the Groupie Tracker Live
+[Click here to view the Live Site on Render](https://groupie-tracker-rr8m.onrender.com/)
 
 🛠️ Features
 
@@ -32,22 +31,20 @@ Explore the Groupie Tracker Live
     Deployment: Render / GitHub
 
 📋 Project Structure
-Plaintext
-
 groupie-tracker/
-├── main.go              # Server entry point & routing
-├── backend/             # Core Logic & Data Management
-│   ├── handlers.go      # HTTP handlers for Home and Details
-│   ├── models.go        # Struct definitions for JSON mapping
-│   └── services.go      # API fetching and JSON unmarshalling
-├── frontend/            # UI Layer
-│   ├── index.html       # Homepage template
-│   ├── details.html     # Artist details template
-│   ├── error.html       # Error handling template
-│   └── static/          # Assets
-│       └── styles.css   # Custom CSS styling
-├── go.mod               # Dependency management
-└── README.md            # Documentation
+├── main.go
+├── backend/
+│   ├── handlers.go
+│   ├── models.go
+│   └── services.go
+├── frontend/
+│   ├── index.html
+│   ├── details.html
+│   ├── error.html
+│   └── static/
+│       └── styles.css
+├── go.mod
+└── README.md
 
 💻 Installation & Usage
 
